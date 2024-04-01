@@ -26,7 +26,7 @@ void delay_spin(uint32_t cnt) {
 
 void HCL_Delay(uint32_t ms) {
   while (ms--) {
-    delay_spin(3000 * ms);
+    delay_spin(3000);
   }
 }
 
@@ -44,7 +44,9 @@ int main()
   MX_GPIO_Init();
 
   while (1) {
-    HCL_GPIO_TogglePin(&hgpio_led); 
+    HCL_GPIO_WritePin(&hgpio_led, GPIO_PIN_RESET);
+    HCL_Delay(1000);
+    HCL_GPIO_WritePin(&hgpio_led, GPIO_PIN_SET);
     HCL_Delay(1000);
   }
 
