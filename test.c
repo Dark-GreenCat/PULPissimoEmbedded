@@ -8,9 +8,10 @@
 #include <hal/gpio/gpio_v3.h>
 
 #include "gpio_def.h"
+#include "pulpissimo_utils.h"
 
 #define PAD_MUX_1     0x00000000
-volatile GPIO_TypeDef *GPIO = (volatile GPIO_TypeDef *)ARCHI_GPIO_ADDR;
+volatile GPIO_TypeDef *GPIO = (volatile GPIO_TypeDef *) ARCHI_GPIO_ADDR;
 
 void delay_spin(uint32_t cnt) {
   while (cnt--) {
@@ -27,13 +28,17 @@ int main()
   // // Turn on GPIO11 Clock
   // ARCHI_WRITE(ARCHI_GPIO_ADDR, GPIO_GPIOEN_OFFSET, 1UL << 11);
 
-  GPIO->PADDIR |= (1UL << 11);
-  GPIO->GPIOEN |= (1UL << 11);
+  SET_BIT(GPIO->PADDIR, 11);
+  SET_BIT(GPIO->GPIOEN, 11);
+  // GPIO->PADDIR |= (1UL << 11);
+  // GPIO->GPIOEN |= (1UL << 11);
 
   while (1) {
-    GPIO->PADOUT |= (1UL << 11);
+    SET_BIT(GPIO->PADOUT, 11);
+    //GPIO->PADOUT |= (1UL << 11);
     delay_spin(1000000);
-    GPIO->PADOUT &= ~(1UL << 11);
+    CLEAR_BIT(GPIO->PADOUT, 11);
+    //GPIO->PADOUT &= ~(1UL << 11);
     delay_spin(1000000);
   // Turn on GPIO11
   // ARCHI_WRITE(ARCHI_GPIO_ADDR, GPIO_PADOUT_OFFSET, 1UL << 11);
