@@ -34,6 +34,7 @@ void MX_GPIO_Init(void) {
   hgpio_led.Port = GPIO;
   hgpio_led.Pin = LED_PIN;
   
+  ARCHI_WRITE(ARCHI_APB_SOC_CTRL_ADDR, APB_SOC_PADFUN0_OFFSET, (1UL << (11 * 2)));
   SET_BIT(hgpio_led.Port->PADDIR, hgpio_led.Pin);
   SET_BIT(hgpio_led.Port->GPIOEN, hgpio_led.Pin);
 }
