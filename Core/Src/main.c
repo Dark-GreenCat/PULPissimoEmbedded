@@ -26,7 +26,7 @@ void delay_spin(uint32_t cnt) {
 
 void HCL_Delay(uint32_t ms) {
   while (ms--) {
-    delay_spin(3000);
+    delay_spin(10000);
   }
 }
 
