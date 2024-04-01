@@ -44,9 +44,7 @@ int main()
   MX_GPIO_Init();
 
   while (1) {
-    HCL_GPIO_WritePin(&hgpio_led, GPIO_PIN_RESET);
-    HCL_Delay(1000);
-    HCL_GPIO_WritePin(&hgpio_led, GPIO_PIN_SET);
+    HCL_GPIO_TogglePin(&hgpio_led);
     HCL_Delay(1000);
   }
 
