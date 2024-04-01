@@ -1,0 +1,6 @@
+-I
+/home/mint/SoC/tools/pulp-runtime/include/
+-I
+./Core/Inc/
+-I
+./HardwareLayer/gpio/
