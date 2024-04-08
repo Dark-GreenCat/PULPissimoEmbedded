@@ -13,12 +13,13 @@ This `README.md` will guide you through the steps needed to collaborate on this 
   - [Step 2: Setup Your Team](#step-2-setup-your-team)
 - [C. Guide For Team Members](#c-guide-for-team-members)
   - [I. Quick Getting Started](#i-quick-getting-started)
-  - [II. Essential Rules for Collaboration](#ii-essential-rules-for-collaboration)
+  - [II. Commit Message Rules](#ii-commit-message-rules)
+  - [III. Essential Rules for Collaboration](#iii-essential-rules-for-collaboration)
     - [Rule 1: Keep Your Branch Up-to-Date](#rule-1-keep-your-branch-up-to-date)
     - [Rule 2: Commit and Merge Regularly](#rule-2-commit-and-merge-regularly)
     - [Rule 3: Divide Work Effectively](#rule-3-divide-work-effectively)
     - [Rule 4: Maintain the Integrity of the Master Branch](#rule-4-maintain-the-integrity-of-the-master-branch)
-  - [III. Advanced Collaboration Guide](#iii-advanced-collaboration-guide)
+  - [IV. Advanced Collaboration Guide](#iv-advanced-collaboration-guide)
     - [Step 1: Clone the Repository](#step-1-clone-the-repository)
     - [Step 2: Collaborating](#step-2-collaborating)
     - [Step 3: Branches](#step-3-branches)
@@ -44,7 +45,7 @@ In this project, we use the following branches:
 ### **II. Nested Feature Branches**
 If the feature is large and requires work from multiple team members, then the team leader can create a `feature` branch from the `develop` branch. Then, each team member can create their own sub-branches from this `feature` branch. Each team member works on their part of the feature in their own branch and once done, they can open a pull request to merge their changes back into the `feature` branch. Once all team members have merged their changes and the feature is complete, the team leader can open a pull request to merge the `feature` branch back into the `develop` branch.
 
-![Branching Strategy](git-branch-strategy.png)
+![Branching Strategy](docs/git-branch-strategy.png)
 
 ## **B. Guide For Team Leaders**
 ---
@@ -115,8 +116,15 @@ If the feature is large and requires work from multiple team members, then the t
 7. **Open a Pull Request**: Once you've pushed your changes, you can go to the GitHub page for the repository and open a pull request. Your changes will be reviewed and then merged into the `develop` branch.
 
 8. **Continue Developing**: Repeat step 2 - 7
+
 ---
-### **II. Essential Rules for Collaboration**
+### **II. Commit Message Rules**
+
+> Commit messages should **follow the format** of this project.
+>
+> Refer this guide to see details: [Commit Message Guide](docs/commit-tag.md)
+---
+### **III. Essential Rules for Collaboration**
 
 #### **Rule 1: Keep Your Branch Up-to-Date**
 Before opening a pull request, ensure your `feature/...` branch is up-to-date with the `develop` branch. Pull the latest changes from `develop`, merge them into your `feature/...` branch, and resolve any conflicts.
@@ -131,7 +139,7 @@ To minimize conflicts, different team members should work on different files or 
 The `master` branch is read-only and should always be deployable. All development work should happen on the `develop` branch or branches that stem from it. The `master` branch should only be updated with fully tested and reviewed code from the `develop` branch.
 
 ---
-### **III. Advanced Collaboration Guide**
+### **IV. Advanced Collaboration Guide**
 
 #### **Step 1: Clone the Repository**
 1. If you're a collaborator, go to the Github Repo page, Git Clone the project, and cd into the directory. Don't fork it! Forking will copy it in a new Repo to your Github page, but you don't want that - you want to collaborate on the same Github Repo with your teammates.
