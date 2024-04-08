@@ -3,7 +3,6 @@
 This `README.md` will guide you through the steps needed to collaborate on this project using Git and GitHub.
 
 ## **Table of Contents**
----
 
 - [A. Branching Strategy](#a-branching-strategy)
   - [I. List of Branches](#i-list-of-branches)
@@ -31,7 +30,6 @@ This `README.md` will guide you through the steps needed to collaborate on this 
     - [Step 9: Updating Your Branch](#step-9-updating-your-branch)
 
 ## **A. Branching Strategy**
----
 
 ### **I. List of Branches**
 In this project, we use the following branches:
@@ -41,14 +39,14 @@ In this project, we use the following branches:
 - `feature`: These branches are created from the develop branch, and are used to develop new features. Once the feature is completed, the feature branch is merged back into the develop branch.
 - `release`: These branches are created from the develop branch when it's time for a new release. When the release is ready, it gets merged into both the master and develop branches.
 - `hotfix`: These branches are created from the master branch if there's a critical issue in production that needs to be fixed immediately.
----
+
 ### **II. Nested Feature Branches**
 If the feature is large and requires work from multiple team members, then the team leader can create a `feature` branch from the `develop` branch. Then, each team member can create their own sub-branches from this `feature` branch. Each team member works on their part of the feature in their own branch and once done, they can open a pull request to merge their changes back into the `feature` branch. Once all team members have merged their changes and the feature is complete, the team leader can open a pull request to merge the `feature` branch back into the `develop` branch.
 
 ![Branching Strategy](docs/git-branch-strategy.png)
 
 ## **B. Guide For Team Leaders**
----
+
 ### **Step 1: Initialize a New Project**
 1. Create a new project/directory from the command line:
    ```bash
@@ -77,7 +75,6 @@ If the feature is large and requires work from multiple team members, then the t
 4. They'll receive an email letting them know you added them and will be listed as a collaborator.
 
 ## **C. Guide For Team Members**
----
 
 ### **I. Quick Getting Started**
 
@@ -117,13 +114,12 @@ If the feature is large and requires work from multiple team members, then the t
 
 8. **Continue Developing**: Repeat step 2 - 7
 
----
 ### **II. Commit Message Rules**
 
 > Commit messages should **follow the format** of this project.
 >
 > Refer this guide to see details: [Commit Message Guide](docs/commit-tag.md)
----
+
 ### **III. Essential Rules for Collaboration**
 
 #### **Rule 1: Keep Your Branch Up-to-Date**
@@ -138,7 +134,6 @@ To minimize conflicts, different team members should work on different files or 
 #### **Rule 4: Maintain the Integrity of the Master Branch**
 The `master` branch is read-only and should always be deployable. All development work should happen on the `develop` branch or branches that stem from it. The `master` branch should only be updated with fully tested and reviewed code from the `develop` branch.
 
----
 ### **IV. Advanced Collaboration Guide**
 
 #### **Step 1: Clone the Repository**
