@@ -2,6 +2,7 @@
 #define __PULPISSIMO_PERIPHERAL_H
 
 #include <stdint.h>
+#include "core.h"
 
 /** @addtogroup Peripheral_registers_structures
   * @{
