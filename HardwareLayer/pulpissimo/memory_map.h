@@ -33,7 +33,8 @@
 
 
 /*!< APB peripherals */
-#define GPIOL_BASE              
+#define GPIOL_BASE              (GPIO_BASE + 0x00000000UL)
+#define GPIOH_BASE              (GPIO_BASE + 0x00000038UL)
 
 /*!< uDMA peripherals */
 
