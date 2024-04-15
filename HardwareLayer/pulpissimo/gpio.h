@@ -1,0 +1,6 @@
+#ifndef __PULPISSIMO_GPIO_H
+#define __PULPISSIMO_GPIO_H
+
+
+
+#endif // __PULPISSIMO_GPIO_H
