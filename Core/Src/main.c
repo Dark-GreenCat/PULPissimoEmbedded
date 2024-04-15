@@ -25,15 +25,10 @@ void MX_GPIO_Init(void) {
   /*Configure GPIO pins : L11 */
   GPIO_InitStruct.Pin = GPIO_PIN_11;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT;
-  HCL_GPIO_Init(GPIOL_BASE, &GPIO_InitStruct);
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-  hgpio_led.Port = GPIO;
-  hgpio_led.Pin = LED_PIN;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HCL_GPIO_Init(GPIOL, &GPIO_InitStruct);
   
   ARCHI_WRITE(ARCHI_APB_SOC_CTRL_ADDR, APB_SOC_PADFUN0_OFFSET, (1UL << (11 * 2)));
-  SET_BIT(hgpio_led.Port->PADDIR, hgpio_led.Pin);
-  SET_BIT(hgpio_led.Port->GPIOEN, hgpio_led.Pin);
 }
 
 int main()

@@ -28,9 +28,6 @@ void              HCL_GPIO_DeInit(GPIO_TypeDef  *GPIOx, uint32_t GPIO_Pin);
 /* IO operation functions *****************************************************/
 GPIO_PinState     HCL_GPIO_ReadPin(GPIO_TypeDef* GPIOx, uint32_t GPIO_Pin);
 void              HCL_GPIO_WritePin(GPIO_TypeDef* GPIOx, uint32_t GPIO_Pin, GPIO_PinState PinState);
-/// @brief 
-/// @param GPIOx 
-/// @param GPIO_Pin 
 void              HCL_GPIO_TogglePin(GPIO_TypeDef* GPIOx, uint32_t GPIO_Pin);
 
 /**
