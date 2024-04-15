@@ -48,8 +48,12 @@ void HCL_GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_InitTypeDef* GPIO_Init) {
         if (iocurrent == 0x00u) continue;
 
         /*--------------------- GPIO Mode Configuration ------------------------*/
-        temp =(GPIO_Init->Mode & GPIO_MODE_Msk);
-        MODIFY_REG(GPIOx->PADDIR, GPIO_MODE_Msk, (temp << position));
+        temp = (GPIO_Init->Mode & GPIO_MODE_Msk);
+        MODIFY_REG(GPIOx->PADDIR, (1uL << position), (temp << position));
+
+        /* Activate the Pull-up or Pull down resistor for the current IO */
+        temp = (GPIO_Init->Pull & GPIO_PULL_Msk);
+        MODIFY_REG(GPIOx->PADOUT, (1uL << position), (temp << position));
 
         /*--------------------- GPIO Clock Enable ------------------------------*/
         SET_BIT(GPIOx->GPIOEN, (1uL << position));

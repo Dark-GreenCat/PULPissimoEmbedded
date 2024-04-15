@@ -24,6 +24,7 @@ typedef struct
 {
   uint32_t Pin;       /*!< Specifies the GPIO pins to be configured. This parameter can be any value of @ref GPIO_pins */
   uint32_t Mode;      /*!< Specifies the operating mode for the selected pins. This parameter can be a value of @ref GPIO_mode */
+  uint32_t Pull;      /*!< Specifies the Pull-up or Pull-Down activation for the selected pins. This parameter can be a value of @ref GPIO_pull */
 }GPIO_InitTypeDef;
 
 /**
@@ -99,6 +100,17 @@ typedef enum
   */ 
 #define  GPIO_MODE_INPUT            MODE_INPUT                                                  /*!< Input Floating Mode                   */
 #define  GPIO_MODE_OUTPUT           MODE_OUTPUT                                   /*!< Output Push Pull Mode                 */
+/**
+  * @}
+  */
+
+ /** @defgroup GPIO_pull GPIO pull
+   * @brief GPIO Pull-Up or Pull-Down Activation
+   * @{
+   */  
+#define  GPIO_PULL_Msk      (0x00000001U)
+#define  GPIO_PULLDOWN      (0x00000000U)   /*!< Pull-up activation                  */
+#define  GPIO_PULLUP        (0x00000001U)   /*!< Pull-down activation                */
 /**
   * @}
   */
