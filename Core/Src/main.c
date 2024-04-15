@@ -1,4 +1,4 @@
-#include "gpio/gpio_hcl_def.h"
+#include "gpio/gpio_hcl.h"
 
 #define PAD_MUX_1     0x00000000
 
@@ -20,6 +20,14 @@ void HCL_Delay(uint32_t ms) {
 }
 
 void MX_GPIO_Init(void) {
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+  /*Configure GPIO pins : L11 */
+  GPIO_InitStruct.Pin = GPIO_PIN_11;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT;
+  HCL_GPIO_Init(GPIOL_BASE, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
   hgpio_led.Port = GPIO;
   hgpio_led.Pin = LED_PIN;
   
