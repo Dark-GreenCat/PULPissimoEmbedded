@@ -78,3 +78,18 @@ void HCL_GPIO_DeInit(GPIO_TypeDef* GPIOx, uint32_t GPIO_Pin) {
         position++;
     }
 }
+
+GPIO_PinState HCL_GPIO_ReadPin(GPIO_TypeDef* GPIOx, uint32_t GPIO_Pin) {
+    return (GPIO_PinState) READ_BIT(GPIOx->PADIN, GPIO_Pin);
+}
+
+void HCL_GPIO_WritePin(GPIO_TypeDef* GPIOx, uint32_t GPIO_Pin, GPIO_PinState PinState) {
+    if (PinState == GPIO_PIN_RESET)
+        SET_BIT(GPIOx->PADOUTSET, GPIO_Pin);
+    else 
+        SET_BIT(GPIOx->PADOUTCLR, GPIO_Pin);
+}
+
+void HCL_GPIO_TogglePin(GPIO_TypeDef* GPIOx, uint32_t GPIO_Pin) {
+    GPIOx->PADOUT ^= GPIO_Pin;
+}
