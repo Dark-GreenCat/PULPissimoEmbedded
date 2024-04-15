@@ -15,7 +15,6 @@
     \li for automatic generation of peripheral register debug information.
 */
 #define     __I     volatile const       /*!< Defines 'read only' permissions */
-#endif
 #define     __O     volatile             /*!< Defines 'write only' permissions */
 #define     __IO    volatile             /*!< Defines 'read / write' permissions */
 
