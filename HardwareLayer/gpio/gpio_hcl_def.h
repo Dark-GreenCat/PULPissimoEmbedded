@@ -94,7 +94,7 @@ typedef enum
 /** @defgroup GPIO_mode GPIO mode
   * @brief GPIO Configuration Mode
   *        Elements values convention: 0x0000000Z
-  *           - Z  : GPIO mode (Input, Output) on 2 bits
+  *           - Z  : GPIO mode (Input, Output) on 1 bits
   * @{
   */ 
 #define  GPIO_MODE_INPUT            MODE_INPUT                                                  /*!< Input Floating Mode                   */
@@ -117,6 +117,7 @@ typedef enum
   * @{
   */
 #define GPIO_MODE_Pos                           0U
+#define GPIO_MODE_Msk                           (0x1UL << GPIO_MODE_Pos)
 #define GPIO_MODE                               (0x3UL << GPIO_MODE_Pos)
 #define MODE_INPUT                              (0x0UL << GPIO_MODE_Pos)
 #define MODE_OUTPUT                             (0x1UL << GPIO_MODE_Pos)

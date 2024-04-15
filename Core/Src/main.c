@@ -1,15 +1,4 @@
-#include "archi/chips/pulpissimo/apb_soc.h"
-#include "archi/chips/pulpissimo/memory_map.h"
-#include "archi/gpio/gpio_v3.h"
-#include "archi/utils.h"
-#include <stdio.h>
-#include <pulp.h>
-#include <stdint.h>
-#include <hal/gpio/gpio_v3.h>
-
-#include "gpio_def.h"
-#include "gpio_hcl.h"
-#include "pulpissimo_utils.h"
+#include "gpio/gpio_hcl_def.h"
 
 #define PAD_MUX_1     0x00000000
 
