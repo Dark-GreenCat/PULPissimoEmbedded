@@ -1,9 +1,10 @@
 #ifndef __PULPISSIMO_MEMORY_MAP_H__
 #define __PULPISSIMO_MEMORY_MAP_H__
 
-/*
- * SOC PERIPHERALS
- */
+/** @addtogroup Soc peripheral_memory_map
+  * @{
+  */
+
 
 #define SOC_PERIPHERALS_BASE    0x1A100000
 
@@ -38,4 +39,16 @@
 
 /*!< uDMA peripherals */
 
+/**
+  * @}
+  */
+
+/** @addtogroup Peripheral_declaration
+  * @{
+  */  
+#define GPIOL               ((GPIO_TypeDef *) GPIOL_BASE)
+#define GPIOH               ((GPIO_TypeDef *) GPIOH_BASE)
+/**
+  * @}
+  */
 #endif
