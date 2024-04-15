@@ -1,0 +1,6 @@
+#ifndef __PULPISSIMO_FUNCTIONAL_PIN_H
+#define __PULPISSIMO_FUNCTIONAL_PIN_H
+
+
+
+#endif
