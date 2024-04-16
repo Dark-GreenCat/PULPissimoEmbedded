@@ -1,4 +1,5 @@
 #include "gpio_hcl.h"
+#include "soc_control/soc_control_hcl_def.h"
 
 void HCL_GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_InitTypeDef* GPIO_Init) {
     uint32_t position = 0x00u;
