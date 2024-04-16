@@ -48,6 +48,7 @@
   */  
 #define GPIOL               ((GPIO_TypeDef *) GPIOL_BASE)
 #define GPIOH               ((GPIO_TypeDef *) GPIOH_BASE)
+#define SOCCTRL             ((SOCCTRL_TypeDef *) SOC_CONTROL_BASE)
 /**
   * @}
   */
