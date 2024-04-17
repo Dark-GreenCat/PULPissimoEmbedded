@@ -44,7 +44,10 @@ void HCL_GPIO_DeInit(GPIO_TypeDef* GPIOx, uint32_t GPIO_Pin) {
 
         /*--------------------- GPIO Mode Configuration ------------------------*/
         /* Configure IO Direction in Input Floating Mode */
-        CLEAR_BIT(GPIOx->PADDIR, (1UL << position));
+        CLEAR_BIT(GPIOx->PADDIR, (1uL << position));
+        
+        /* Reset Pull down resistor for the current IO */
+        CLEAR_BIT(GPIOx->PADOUTCLR, (1uL << position));
 
         /*--------------------- GPIO Clock Disable ------------------------------*/
         CLEAR_BIT(GPIOx->GPIOEN, (1uL << position));
