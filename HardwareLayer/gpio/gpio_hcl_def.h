@@ -90,7 +90,7 @@ typedef enum
 #define GPIO_PIN_All               ((uint32_t)0xFFFFFFFFU)  /* All pins selected */
 
 #define GPIO_PIN_MASK              (0xFFFFFFFFU) /* PIN mask for assert test */
-#define GPIO_PIN_NUMBER(GPIO_PIN_x) (__builtin_ctz((GPIO_PIN_x)) + 1)
+#define GPIO_PIN_NUMBER(GPIO_PIN_x) (__builtin_ctz((GPIO_PIN_x)))
 /**
   * @}
   */
@@ -186,6 +186,11 @@ typedef enum
 #define GPIOL_PIN_30_PADMUX_Msk                SOCCTRL_PAD_MUX_2_PADMUX37_Msk
 #define GPIOL_PIN_31_PADMUX_Pos                SOCCTRL_PAD_MUX_2_PADMUX38_Pos
 #define GPIOL_PIN_31_PADMUX_Msk                SOCCTRL_PAD_MUX_2_PADMUX38_Msk
+
+#define GPIOL_PIN_x_PADMUX_Pos(GPIOL_PIN_NUMBER) \
+    ((GPIOL_PIN_NUMBER < 16) ? (GPIOL_PIN_NUMBER * 2) : \
+    ((GPIOL_PIN_NUMBER < 26) ? ((GPIOL_PIN_NUMBER - 16) * 2) : \
+    ((GPIOL_PIN_NUMBER - 25) * 2)))
 /**
   * @}
   */
