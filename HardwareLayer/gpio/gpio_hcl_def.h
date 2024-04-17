@@ -220,9 +220,9 @@ typedef enum
 #define MODE_INPUT                              (0x0UL << GPIO_MODE_Pos)
 #define MODE_OUTPUT                             (0x1UL << GPIO_MODE_Pos)
 #define TRIGGER_MODE_Pos                        20U
-#define TRIGGER_MODE                            (0x3UL << TRIGGER_MODE_Pos)
-#define TRIGGER_RISING                          (0x1UL << TRIGGER_MODE_Pos)
-#define TRIGGER_FALLING                         (0x2UL << TRIGGER_MODE_Pos)
+#define TRIGGER_MODE_Msk                        (0x3UL << TRIGGER_MODE_Pos)
+#define TRIGGER_FALLING                         (0x1UL << TRIGGER_MODE_Pos)
+#define TRIGGER_RISING                          (0x2UL << TRIGGER_MODE_Pos)
 /**
   * @}
   */
