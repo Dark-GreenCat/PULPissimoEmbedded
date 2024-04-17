@@ -21,7 +21,13 @@ void HCL_GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_InitTypeDef* GPIO_Init) {
         temp = (GPIO_Init->Pull & GPIO_PULL_Msk);
         MODIFY_REG(GPIOx->PADOUT, (1uL << position), (temp << position));
 
-        /*--------------------- GPIO Clock Enable ------------------------------*/
+        /* Redirect Pad Mux to GPIO pin */
+        if (GPIOx == GPIOL) {
+            temp = GPIOL_PIN_x_PADMUX_Pos(GPIO_PIN_NUMBER(GPIO_Init->Pin));
+            MODIFY_REG(SOCCTRL->PAD_MUX[((position < 16)? 0 : 1)], (3uL << temp), (1uL << temp)); 
+        }
+
+        /*--------------------- GPIO Clock Enable ----------------------    --------*/
         SET_BIT(GPIOx->GPIOEN, (1uL << position));
 
         position++;
@@ -47,6 +53,12 @@ void HCL_GPIO_DeInit(GPIO_TypeDef* GPIOx, uint32_t GPIO_Pin) {
         
         /* Reset Pull down resistor for the current IO */
         CLEAR_BIT(GPIOx->PADOUTCLR, (1uL << position));
+
+        /* Reset Pad Mux */
+        if (GPIOx == GPIOL) {
+            temp = GPIOL_PIN_x_PADMUX_Pos(GPIO_PIN_NUMBER(GPIO_Pin));
+            CLEAR_BIT(SOCCTRL->PAD_MUX[((position < 16)? 0 : 1)], (3uL << temp));
+        }
 
         /*--------------------- GPIO Clock Disable ------------------------------*/
         CLEAR_BIT(GPIOx->GPIOEN, (1uL << position));
