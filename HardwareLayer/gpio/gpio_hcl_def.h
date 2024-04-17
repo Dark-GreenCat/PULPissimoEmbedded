@@ -90,6 +90,7 @@ typedef enum
 #define GPIO_PIN_All               ((uint32_t)0xFFFFFFFFU)  /* All pins selected */
 
 #define GPIO_PIN_MASK              (0xFFFFFFFFU) /* PIN mask for assert test */
+#define GPIO_PIN_NUMBER(GPIO_PIN_x) (__builtin_ctz((GPIO_PIN_x)) + 1)
 /**
   * @}
   */
@@ -113,6 +114,78 @@ typedef enum
 #define  GPIO_PULL_Msk      (0x00000001U)
 #define  GPIO_PULLDOWN      (0x00000000U)   /*!< Pull-up activation                  */
 #define  GPIO_PULLUP        (0x00000001U)   /*!< Pull-down activation                */
+/**
+  * @}
+  */
+
+ /** @defgroup GPIO_pad_mux GPIO pad mux
+   * @brief GPIO with coresponding PAD_MUX value
+   * @{
+   */  
+#define GPIOL_PIN_0_PADMUX_Pos                 SOCCTRL_PAD_MUX_0_PADMUX0_Pos
+#define GPIOL_PIN_0_PADMUX_Msk                 SOCCTRL_PAD_MUX_0_PADMUX0_Msk
+#define GPIOL_PIN_1_PADMUX_Pos                 SOCCTRL_PAD_MUX_0_PADMUX1_Pos
+#define GPIOL_PIN_1_PADMUX_Msk                 SOCCTRL_PAD_MUX_0_PADMUX1_Msk
+#define GPIOL_PIN_2_PADMUX_Pos                 SOCCTRL_PAD_MUX_0_PADMUX2_Pos
+#define GPIOL_PIN_2_PADMUX_Msk                 SOCCTRL_PAD_MUX_0_PADMUX2_Msk
+#define GPIOL_PIN_3_PADMUX_Pos                 SOCCTRL_PAD_MUX_0_PADMUX3_Pos
+#define GPIOL_PIN_3_PADMUX_Msk                 SOCCTRL_PAD_MUX_0_PADMUX3_Msk
+#define GPIOL_PIN_4_PADMUX_Pos                 SOCCTRL_PAD_MUX_0_PADMUX4_Pos
+#define GPIOL_PIN_4_PADMUX_Msk                 SOCCTRL_PAD_MUX_0_PADMUX4_Msk
+#define GPIOL_PIN_5_PADMUX_Pos                 SOCCTRL_PAD_MUX_0_PADMUX5_Pos
+#define GPIOL_PIN_5_PADMUX_Msk                 SOCCTRL_PAD_MUX_0_PADMUX5_Msk
+#define GPIOL_PIN_6_PADMUX_Pos                 SOCCTRL_PAD_MUX_0_PADMUX6_Pos
+#define GPIOL_PIN_6_PADMUX_Msk                 SOCCTRL_PAD_MUX_0_PADMUX6_Msk
+#define GPIOL_PIN_7_PADMUX_Pos                 SOCCTRL_PAD_MUX_0_PADMUX7_Pos
+#define GPIOL_PIN_7_PADMUX_Msk                 SOCCTRL_PAD_MUX_0_PADMUX7_Msk
+#define GPIOL_PIN_8_PADMUX_Pos                 SOCCTRL_PAD_MUX_0_PADMUX8_Pos
+#define GPIOL_PIN_8_PADMUX_Msk                 SOCCTRL_PAD_MUX_0_PADMUX8_Msk
+#define GPIOL_PIN_9_PADMUX_Pos                 SOCCTRL_PAD_MUX_0_PADMUX9_Pos
+#define GPIOL_PIN_9_PADMUX_Msk                 SOCCTRL_PAD_MUX_0_PADMUX9_Msk
+#define GPIOL_PIN_10_PADMUX_Pos                SOCCTRL_PAD_MUX_0_PADMUX10_Pos
+#define GPIOL_PIN_10_PADMUX_Msk                SOCCTRL_PAD_MUX_0_PADMUX10_Msk
+#define GPIOL_PIN_11_PADMUX_Pos                SOCCTRL_PAD_MUX_0_PADMUX11_Pos
+#define GPIOL_PIN_11_PADMUX_Msk                SOCCTRL_PAD_MUX_0_PADMUX11_Msk
+#define GPIOL_PIN_12_PADMUX_Pos                SOCCTRL_PAD_MUX_0_PADMUX12_Pos
+#define GPIOL_PIN_12_PADMUX_Msk                SOCCTRL_PAD_MUX_0_PADMUX12_Msk
+#define GPIOL_PIN_13_PADMUX_Pos                SOCCTRL_PAD_MUX_0_PADMUX13_Pos
+#define GPIOL_PIN_13_PADMUX_Msk                SOCCTRL_PAD_MUX_0_PADMUX13_Msk
+#define GPIOL_PIN_14_PADMUX_Pos                SOCCTRL_PAD_MUX_0_PADMUX14_Pos
+#define GPIOL_PIN_14_PADMUX_Msk                SOCCTRL_PAD_MUX_0_PADMUX14_Msk
+#define GPIOL_PIN_15_PADMUX_Pos                SOCCTRL_PAD_MUX_0_PADMUX15_Pos
+#define GPIOL_PIN_15_PADMUX_Msk                SOCCTRL_PAD_MUX_0_PADMUX15_Msk
+#define GPIOL_PIN_16_PADMUX_Pos                SOCCTRL_PAD_MUX_1_PADMUX16_Pos
+#define GPIOL_PIN_16_PADMUX_Msk                SOCCTRL_PAD_MUX_1_PADMUX16_Msk
+#define GPIOL_PIN_17_PADMUX_Pos                SOCCTRL_PAD_MUX_1_PADMUX17_Pos
+#define GPIOL_PIN_17_PADMUX_Msk                SOCCTRL_PAD_MUX_1_PADMUX17_Msk
+#define GPIOL_PIN_18_PADMUX_Pos                SOCCTRL_PAD_MUX_1_PADMUX18_Pos
+#define GPIOL_PIN_18_PADMUX_Msk                SOCCTRL_PAD_MUX_1_PADMUX18_Msk
+#define GPIOL_PIN_19_PADMUX_Pos                SOCCTRL_PAD_MUX_1_PADMUX19_Pos
+#define GPIOL_PIN_19_PADMUX_Msk                SOCCTRL_PAD_MUX_1_PADMUX19_Msk
+#define GPIOL_PIN_20_PADMUX_Pos                SOCCTRL_PAD_MUX_1_PADMUX20_Pos
+#define GPIOL_PIN_20_PADMUX_Msk                SOCCTRL_PAD_MUX_1_PADMUX20_Msk
+#define GPIOL_PIN_21_PADMUX_Pos                SOCCTRL_PAD_MUX_1_PADMUX21_Pos
+#define GPIOL_PIN_21_PADMUX_Msk                SOCCTRL_PAD_MUX_1_PADMUX21_Msk
+#define GPIOL_PIN_22_PADMUX_Pos                SOCCTRL_PAD_MUX_1_PADMUX22_Pos
+#define GPIOL_PIN_22_PADMUX_Msk                SOCCTRL_PAD_MUX_1_PADMUX22_Msk
+#define GPIOL_PIN_23_PADMUX_Pos                SOCCTRL_PAD_MUX_1_PADMUX23_Pos
+#define GPIOL_PIN_23_PADMUX_Msk                SOCCTRL_PAD_MUX_1_PADMUX23_Msk
+#define GPIOL_PIN_24_PADMUX_Pos                SOCCTRL_PAD_MUX_1_PADMUX24_Pos
+#define GPIOL_PIN_24_PADMUX_Msk                SOCCTRL_PAD_MUX_1_PADMUX24_Msk
+#define GPIOL_PIN_25_PADMUX_Pos                SOCCTRL_PAD_MUX_1_PADMUX25_Pos
+#define GPIOL_PIN_25_PADMUX_Msk                SOCCTRL_PAD_MUX_1_PADMUX25_Msk
+#define GPIOL_PIN_26_PADMUX_Pos                SOCCTRL_PAD_MUX_2_PADMUX33_Pos
+#define GPIOL_PIN_26_PADMUX_Msk                SOCCTRL_PAD_MUX_2_PADMUX33_Msk
+#define GPIOL_PIN_27_PADMUX_Pos                SOCCTRL_PAD_MUX_2_PADMUX34_Pos
+#define GPIOL_PIN_27_PADMUX_Msk                SOCCTRL_PAD_MUX_2_PADMUX34_Msk
+#define GPIOL_PIN_28_PADMUX_Pos                SOCCTRL_PAD_MUX_2_PADMUX35_Pos
+#define GPIOL_PIN_28_PADMUX_Msk                SOCCTRL_PAD_MUX_2_PADMUX35_Msk
+#define GPIOL_PIN_29_PADMUX_Pos                SOCCTRL_PAD_MUX_2_PADMUX36_Pos
+#define GPIOL_PIN_29_PADMUX_Msk                SOCCTRL_PAD_MUX_2_PADMUX36_Msk
+#define GPIOL_PIN_30_PADMUX_Pos                SOCCTRL_PAD_MUX_2_PADMUX37_Pos
+#define GPIOL_PIN_30_PADMUX_Msk                SOCCTRL_PAD_MUX_2_PADMUX37_Msk
+#define GPIOL_PIN_31_PADMUX_Pos                SOCCTRL_PAD_MUX_2_PADMUX38_Pos
+#define GPIOL_PIN_31_PADMUX_Msk                SOCCTRL_PAD_MUX_2_PADMUX38_Msk
 /**
   * @}
   */
