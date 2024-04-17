@@ -3,6 +3,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "../pulpissimo/pulpissimo.h"
+#include "soc_control/soc_control_hcl_def.h"
+
 
 /** @addtogroup PULPissimo_HCL_Driver
   * @{
