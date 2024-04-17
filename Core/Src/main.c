@@ -25,8 +25,6 @@ void MX_GPIO_Init(void) {
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HCL_GPIO_Init(LED_GPIO_Port, &GPIO_InitStruct);
-  
-  MODIFY_REG(*((volatile uint32_t*) (SOC_CONTROL_BASE + 0x00000010 + PAD_MUX_1)), (3UL << (11 * 2)), (1UL << (11 * 2)));
 }
 
 int main()
