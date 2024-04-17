@@ -5,13 +5,10 @@ void HCL_GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_InitTypeDef* GPIO_Init) {
     uint32_t iocurrent;
     uint32_t temp;
 
-    while (((GPIO_Init->Pin) >> position) != 0x00u) {
+    for(position = 0x00u; ((GPIO_Init->Pin) >> position) != 0x00u; position++) {
         /* Get current io position */
         iocurrent = (GPIO_Init->Pin) & (1uL << position);
-        if (iocurrent == 0x00u) {
-            position++;
-            continue;
-        }
+        if (iocurrent == 0x00u) continue;
 
         /*--------------------- GPIO Mode Configuration ------------------------*/
         temp = (GPIO_Init->Mode & GPIO_MODE_Msk);
@@ -39,13 +36,10 @@ void HCL_GPIO_DeInit(GPIO_TypeDef* GPIOx, uint32_t GPIO_Pin) {
     uint32_t iocurrent;
     uint32_t temp;
 
-    while (((GPIO_Pin) >> position) != 0x00u) {
+    for(position = 0x00u; ((GPIO_Pin) >> position) != 0x00u; position++) {
         /* Get current io position */
         iocurrent = (GPIO_Pin) & (1uL << position);
-        if (iocurrent == 0x00u) {
-            position++;
-            continue;
-        }
+        if (iocurrent == 0x00u) continue;
 
         /*--------------------- GPIO Mode Configuration ------------------------*/
         /* Configure IO Direction in Input Floating Mode */
