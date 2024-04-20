@@ -43,7 +43,7 @@ void HCL_GPIO_IRQ_Handler(void) {
   uint8_t count = 10;
   while (count--) {
     HCL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-    HCL_Delay(200);
+    delay_us(100000);
   }
 }
 
@@ -52,6 +52,7 @@ int main()
   MX_GPIO_Init();
 
   rt_irq_set_handler(15, HCL_GPIO_IRQ_Handler);
+  SET_BIT(*((volatile uint32_t*) 0x1A109004), 1uL << 15);
 
   while (1) {
     HCL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
