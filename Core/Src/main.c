@@ -6,6 +6,9 @@
 #define LED_GPIO_Port     GPIOL
 #define LED_Pin           GPIO_PIN_11
 
+#define BTN_GPIO_Port     GPIOL
+#define BTN_Pin           GPIO_PIN_14
+
 extern void delay_us(uint32_t us);
 
 void delay_spin(uint32_t cnt) {
@@ -28,6 +31,12 @@ void MX_GPIO_Init(void) {
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HCL_GPIO_Init(LED_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : LED */
+  GPIO_InitStruct.Pin = BTN_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HCL_GPIO_Init(BTN_GPIO_Port, &GPIO_InitStruct);
 }
 
 void HCL_GPIO_IRQ_Handler(void) {
