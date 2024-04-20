@@ -1,4 +1,5 @@
 #include "gpio/gpio_hcl.h"
+#include "implem/irq.h"
 
 #define PAD_MUX_1     0x00000000
 
@@ -29,9 +30,19 @@ void MX_GPIO_Init(void) {
   HCL_GPIO_Init(LED_GPIO_Port, &GPIO_InitStruct);
 }
 
+void HCL_GPIO_IRQ_Handler(void) {
+  uint8_t count = 10;
+  while (count--) {
+    HCL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+    HCL_Delay(200);
+  }
+}
+
 int main()
 {
   MX_GPIO_Init();
+
+  rt_irq_set_handler(15, HCL_GPIO_IRQ_Handler);
 
   while (1) {
     HCL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
