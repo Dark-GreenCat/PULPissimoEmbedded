@@ -5,6 +5,8 @@
 #define LED_GPIO_Port     GPIOL
 #define LED_Pin           GPIO_PIN_11
 
+extern void delay_us(uint32_t us);
+
 void delay_spin(uint32_t cnt) {
   while (cnt--) {
     __asm__ volatile ("nop");
@@ -33,7 +35,8 @@ int main()
 
   while (1) {
     HCL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-    HCL_Delay(1000);
+    // HCL_Delay(1000);
+    delay_us(500000);
   }
 
   return 0;
