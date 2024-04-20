@@ -97,12 +97,18 @@ typedef enum
 
 /** @defgroup GPIO_mode GPIO mode
   * @brief GPIO Configuration Mode
-  *        Elements values convention: 0x0000000Z
+  *        Elements values convention: 0x00W0000Z
+  *           - W  : EXTI trigger detection on 2 bits
   *           - Z  : GPIO mode (Input, Output) on 1 bits
   * @{
   */ 
 #define  GPIO_MODE_INPUT            MODE_INPUT                                                  /*!< Input Floating Mode                   */
 #define  GPIO_MODE_OUTPUT           MODE_OUTPUT                                   /*!< Output Push Pull Mode                 */
+
+#define  GPIO_MODE_IT_RISING                    (MODE_INPUT | TRIGGER_RISING)                     /*!< External Interrupt Mode with Rising edge trigger detection          */
+#define  GPIO_MODE_IT_FALLING                   (MODE_INPUT | TRIGGER_FALLING)                    /*!< External Interrupt Mode with Falling edge trigger detection         */
+#define  GPIO_MODE_IT_RISING_FALLING            (MODE_INPUT | TRIGGER_RISING | TRIGGER_FALLING)   /*!< External Interrupt Mode with Rising/Falling edge trigger detection  */
+
 /**
   * @}
   */
@@ -213,6 +219,10 @@ typedef enum
 #define GPIO_MODE                               (0x3UL << GPIO_MODE_Pos)
 #define MODE_INPUT                              (0x0UL << GPIO_MODE_Pos)
 #define MODE_OUTPUT                             (0x1UL << GPIO_MODE_Pos)
+#define TRIGGER_MODE_Pos                        20U
+#define TRIGGER_MODE_Msk                        (0x3UL << TRIGGER_MODE_Pos)
+#define TRIGGER_FALLING                         (0x1UL << TRIGGER_MODE_Pos)
+#define TRIGGER_RISING                          (0x2UL << TRIGGER_MODE_Pos)
 /**
   * @}
   */

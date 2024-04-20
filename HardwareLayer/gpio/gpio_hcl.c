@@ -17,6 +17,20 @@ void HCL_GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_InitTypeDef* GPIO_Init) {
         /* Activate the Pull-up or Pull down resistor for the current IO */
         temp = (GPIO_Init->Pull & GPIO_PULL_Msk);
         MODIFY_REG(GPIOx->PADOUT, (1uL << position), (temp << position));
+        
+        /* Disable GPIO Interrupt */
+        CLEAR_BIT(GPIOx->INTEN, (1uL << position));
+
+        /*--------------------- EXTI Mode Configuration ------------------------*/
+        if (GPIO_Init->Mode & TRIGGER_MODE_Msk) {
+            temp = (((GPIO_Init->Mode & TRIGGER_MODE_Msk) >> TRIGGER_MODE_Pos) - 1uL);   
+
+            if (position < 16)  MODIFY_REG(GPIOx->INTTYPE0, (3uL << (position * 2)), (temp << (position * 2)));
+            else                MODIFY_REG(GPIOx->INTTYPE1, (3uL << ((position - 16) * 2)), (temp << ((position - 16) * 2)));
+
+            /* Enable GPIO Interrupt */
+            SET_BIT(GPIOx->INTEN, (1uL << position));
+        }
 
         /* Redirect Pad Mux to GPIO pin */
         if (GPIOx == GPIOL) {
@@ -47,6 +61,14 @@ void HCL_GPIO_DeInit(GPIO_TypeDef* GPIOx, uint32_t GPIO_Pin) {
         
         /* Reset Pull down resistor for the current IO */
         CLEAR_BIT(GPIOx->PADOUTCLR, (1uL << position));
+
+        /* Disable GPIO Interrupt */
+        CLEAR_BIT(GPIOx->INTEN, (1uL << position));
+
+        /*--------------------- EXTI Mode Configuration ------------------------*/
+        /* Reset Interrupt Mode to default */
+        if (position < 16)  CLEAR_BIT(GPIOx->INTTYPE0, (3uL << (position * 2)));
+        else                CLEAR_BIT(GPIOx->INTTYPE1, (3uL << ((position - 16) * 2)));     
 
         /* Reset Pad Mux */
         if (GPIOx == GPIOL) {
