@@ -1,6 +1,34 @@
 #include "gpio/gpio_hcl.h"
 #include "implem/irq.h"
-#include "hal/cv32e40p/cv32e40p.h"
+
+#define hal_spr_read_then_clr(reg,val) \
+  ({ \
+    int state; \
+    asm volatile ("csrrc %0, %1, %2" :  "=r" (state) : "I" (reg), "I" (val) ); \
+    state; \
+  })
+
+#define hal_spr_read_then_set(reg,val) \
+  ({ \
+    int state; \
+    asm volatile ("csrrs %0, %1, %2" :  "=r" (state) : "I" (reg), "I" (val) ); \
+    state; \
+  })
+
+static inline void hal_irq_enable()
+{
+  // This memory barrier is needed to prevent the compiler to cross the irq barrier
+  __asm__ __volatile__ ("" : : : "memory");
+  hal_spr_read_then_set(0x300, 0x1<<3);
+}
+
+static inline int hal_irq_disable()
+{
+  int irq = hal_spr_read_then_clr(0x300, 0x1<<3);
+  // This memory barrier is needed to prevent the compiler to cross the irq barrier
+  __asm__ __volatile__ ("" : : : "memory");
+  return irq;
+}
 
 #define PAD_MUX_1     0x00000000
 
